@@ -13,3 +13,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
+      timeout: 900
