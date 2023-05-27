@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>물품 목록</h2>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>QR ID값</th>
+                <th>상품 이름</th>
+                <th>배송 주소</th>
+                <th>QR코드 생성</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="qrInfo : ${qRinfos}">
+                <td th:text="${qrInfo.qrId}">QR ID</td>
+                <td th:text="${qrInfo.productName}">상품이름</td>
+                <td th:text="${qrInfo.address}">배송 주소</td>
+                <td>
+                    <button class="btn btn-primary float"
+                            onclick="location.href='qrCode.html'"
+                            th:onclick="|location.href='@{/parcel/{qrId}(qrId=${qrInfo.qrId})}'|"
+                            type="button">QR코드 생성
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>

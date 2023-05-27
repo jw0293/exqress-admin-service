@@ -25,18 +25,15 @@
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
-                <td th:text="${user.userId}">회원 ID</td>
+                <td><a href="userInfo.html" th:href="@{/{userId}/parcels(userId=${user.userId})}" th:text="${user.userId}">회원 ID</a></td>
                 <td th:text="${user.name}">회원 이름</td>
                 <td th:text="${user.phoneNumber}">전화번호</td>
                 <td>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-primary float"
-                                    onclick="location.href='inputParcel.html'"
-                                    th:onclick="|location.href='@{/parcel/{user.userId}/assign}'|"
-                                    type="button">배송 물품 정보 입력</button>
-                        </div>
-                    </div>
+                    <button class="btn btn-primary float"
+                            onclick="location.href='inputParcel.html'"
+                            th:onclick="|location.href='@{/parcel/{userId}/assign(userId=${user.userId})}'|"
+                            type="button">배송 물품 정보 입력
+                    </button>
                 </td>
             </tr>
 

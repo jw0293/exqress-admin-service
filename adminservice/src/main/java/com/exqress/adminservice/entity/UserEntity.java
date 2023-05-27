@@ -37,4 +37,8 @@ public class UserEntity implements Serializable {
         this.userId = id;
         this.phoneNumber = pn;
     }
+
+    public void assginQRInfo(QRinfo qRinfo){
+        this.qRinfoList.add(qRinfo);
+    }
 }

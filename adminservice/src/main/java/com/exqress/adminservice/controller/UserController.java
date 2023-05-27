@@ -1,5 +1,6 @@
 package com.exqress.adminservice.controller;
 
+import com.exqress.adminservice.entity.QRinfo;
 import com.exqress.adminservice.entity.UserEntity;
 import com.exqress.adminservice.repository.UserRepository;
 import com.exqress.adminservice.vo.RequestUser;
@@ -37,5 +38,14 @@ public class UserController {
         userRepository.save(userEntity);
     }
 
+    @GetMapping("/{userId}/parcels")
+    public String getParcels(@PathVariable String userId, Model model){
+        UserEntity user = userRepository.findByUserId(userId);
+        log.info("User Name : {}", user.getName());
+        List<QRinfo> qRinfos = user.getQRinfoList();
+        log.info("qrInfo Size : {}", qRinfos.size());
+        model.addAttribute("qRinfos", qRinfos);
+        return "form/userInfo";
+    }
 
 }

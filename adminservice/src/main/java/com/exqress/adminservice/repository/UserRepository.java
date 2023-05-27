@@ -7,4 +7,6 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
     @Override
     Iterable<UserEntity> findAll();
+
+    UserEntity findByUserId(String userId);
 }
