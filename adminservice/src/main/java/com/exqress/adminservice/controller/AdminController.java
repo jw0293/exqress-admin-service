@@ -2,7 +2,9 @@ package com.exqress.adminservice.controller;
 
 import com.exqress.adminservice.entity.Admin;
 import com.exqress.adminservice.repository.AdminRepository;
+import com.exqress.adminservice.service.LoginService;
 import com.exqress.adminservice.vo.RequestAdmin;
+import com.exqress.adminservice.vo.RequestLogin;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ import org.modelmapper.convention.MatchingStrategies;
 public class AdminController {
 
     private ModelMapper mapper;
+    private final LoginService loginService;
     private final AdminRepository adminRepository;
 
     @PostConstruct
@@ -51,6 +53,24 @@ public class AdminController {
         Admin admin = mapper.map(requestAdmin, Admin.class);
         adminRepository.save(admin);
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/signIn")
+    public String signInForm(@ModelAttribute("loginForm") RequestLogin requestLogin){
+        return "admin/signInAdminForm";
+    }
+
+    @PostMapping("/signIn")
+    public String signIn(@Valid @ModelAttribute("loginForm") RequestLogin requestLogin, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) return "admin/signInAdminForm";
+        Admin admin = loginService.signIn(requestLogin.getLoginId(), requestLogin.getPassword());
+        if(admin == null) {
+            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 일치하지 않습니다.");
+            return "admin/signInAdminForm";
+        }
+
+        // Login Success TODO
         return "redirect:/";
     }
 }
