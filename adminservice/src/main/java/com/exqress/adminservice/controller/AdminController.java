@@ -3,9 +3,12 @@ package com.exqress.adminservice.controller;
 import com.exqress.adminservice.entity.Admin;
 import com.exqress.adminservice.repository.AdminRepository;
 import com.exqress.adminservice.service.LoginService;
+import com.exqress.adminservice.service.SessionConstant;
 import com.exqress.adminservice.vo.RequestAdmin;
 import com.exqress.adminservice.vo.RequestLogin;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +65,7 @@ public class AdminController {
     }
 
     @PostMapping("/signIn")
-    public String signIn(@Valid @ModelAttribute("loginForm") RequestLogin requestLogin, BindingResult bindingResult){
+    public String signIn(@Valid @ModelAttribute("loginForm") RequestLogin requestLogin, BindingResult bindingResult, HttpServletRequest request){
         if(bindingResult.hasErrors()) return "admin/signInAdminForm";
         Admin admin = loginService.signIn(requestLogin.getLoginId(), requestLogin.getPassword());
         if(admin == null) {
@@ -71,6 +74,20 @@ public class AdminController {
         }
 
         // Login Success TODO
+        // 세션이 존재하면 세션 반환, 없으면 신규 생성
+        HttpSession session = request.getSession();
+        // 세션에 로그인 정보 보관
+        session.setAttribute(SessionConstant.LOGIN_MEMBER, admin);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/signOut")
+    public String signOut(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            session.invalidate();
+        }
         return "redirect:/";
     }
 }
