@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+            href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>사용자 목록</h2>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>회원 ID</th>
+                <th>회원 이름</th>
+                <th>회원 전화번호</th>
+                <th>회원 배송 물품 입력</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.userId}">회원 ID</td>
+                <td th:text="${user.name}">회원 이름</td>
+                <td th:text="${user.phoneNumber}">전화번호</td>
+                <td>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary float"
+                                    onclick="location.href='inputParcel.html'"
+                                    th:onclick="|location.href='@{/parcel/{user.userId}/assign}'|"
+                                    type="button">배송 물품 정보 입력</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
