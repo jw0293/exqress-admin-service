@@ -15,6 +15,7 @@ spring:
       ddl-auto: create
 
 server:
+  port: 4003
   servlet:
     session:
       tracking-modes: cookie
