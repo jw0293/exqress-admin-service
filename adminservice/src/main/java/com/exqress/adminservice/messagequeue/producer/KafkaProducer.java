@@ -1,6 +1,6 @@
-package com.example.userservice.messagequeue;
+package com.exqress.adminservice.messagequeue.producer;
 
-import com.example.userservice.kafkaDto.KafkaCreateUser;
+import com.exqress.adminservice.kafkadto.KafkaQRinfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -22,12 +22,12 @@ public class KafkaProducer {
         objectMapper = new ObjectMapper();
     }
 
-    public void sendCreateUser(String kafkaTopic, KafkaCreateUser kafkaCreateUser){
+    public void sendQRinfo(String kafkaTopic, KafkaQRinfo kafkaQRinfo){
         String jsonInString = "";
         try{
-            jsonInString = objectMapper.writeValueAsString(kafkaCreateUser);
+            jsonInString = objectMapper.writeValueAsString(kafkaQRinfo);
         } catch (JsonProcessingException e){
-            e.printStackTrace();;
+            e.printStackTrace();
         }
         kafkaTemplate.send(kafkaTopic, jsonInString);
     }
