@@ -1,7 +1,9 @@
 package com.exqress.adminservice.service;
 
 import com.exqress.adminservice.entity.QRinfo;
-import com.exqress.adminservice.kafkadto.KafkaQRinfo;
+import com.exqress.adminservice.entity.UserEntity;
+import com.exqress.adminservice.kafkadto.KafkaQRinfoToDelivery;
+import com.exqress.adminservice.kafkadto.KafkaQRinfoToUser;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,11 +24,20 @@ public class ParcelService {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     }
 
-    public KafkaQRinfo createQRInfo(QRinfo qRinfo){
-        KafkaQRinfo kafkaQRinfo = modelMapper.map(qRinfo, KafkaQRinfo.class);
+    public KafkaQRinfoToUser createQRInfoToUserService(QRinfo qRinfo){
+        KafkaQRinfoToUser kafkaQRinfo = modelMapper.map(qRinfo, KafkaQRinfoToUser.class);
         kafkaQRinfo.setCurState("ready");
         kafkaQRinfo.setUserId(qRinfo.getUserEntity().getUserId());
 
         return kafkaQRinfo;
+    }
+
+    public KafkaQRinfoToDelivery createQRInfoToDeliveryService(QRinfo qRinfo, UserEntity user){
+        KafkaQRinfoToDelivery kafkaQRinfoToDelivery = modelMapper.map(qRinfo, KafkaQRinfoToDelivery.class);
+        kafkaQRinfoToDelivery.setCurState("ready");
+        kafkaQRinfoToDelivery.setReceiverName(user.getName());
+        kafkaQRinfoToDelivery.setReceiverPhoneNumber(user.getPhoneNumber());
+
+        return kafkaQRinfoToDelivery;
     }
 }
