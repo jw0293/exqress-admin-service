@@ -4,18 +4,58 @@
     <meta charset="utf-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @page {
+            size: auto;
+            margin: 0;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            #sectionToPrint,
+            #sectionToPrint * {
+                visibility: visible;
+            }
+            #sectionToPrint {
+                position: absolute;
+                left: 10px;
+                top: 0;
+            }
+            .invisible-btn {
+                display: none;
+            }
+            .container {
+                width:100vw;
+                height:100vh;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function printSection() {
+            window.print();
+        }
+    </script>
 </head>
 <body>
-    <img th:src="@{'data:image/jpeg;base64,'+${img}}">
-    <div class="row">
-        <div class="col">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">출력하기</button>
+    <div class="container">
+        <div id="sectionToPrint">
+            <img th:src="@{'data:image/jpeg;base64,'+${img}}">
         </div>
-        <div class="col">
-            <button class="w-100 btn btn-secondary btn-lg"
-                    onclick="location.href='users.html'"
-                    th:onclick="|location.href='@{/users}'|"
-                    type="button">돌아가기</button>
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg invisible-btn" type="submit" onclick="printSection()">출력하기</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg invisible-btn"
+                        onclick="location.href='users.html'"
+                        th:onclick="|location.href='@{/users}'|"
+                        type="button">돌아가기</button>
+            </div>
         </div>
     </div>
 </body>
