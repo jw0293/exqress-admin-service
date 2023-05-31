@@ -6,6 +6,7 @@ import lombok.Data;
 public class KafkaQRinfoToUser {
     private String userId;
     private String qrId;
+    private String company;
     private String invoiceNo;
     private String productName;
     private String curState;

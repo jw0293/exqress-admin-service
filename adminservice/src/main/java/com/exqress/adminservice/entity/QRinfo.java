@@ -27,6 +27,9 @@ public class QRinfo implements Serializable {
     @Column(nullable = false)
     private String address;
 
+    @Column(nullable = false)
+    private String company;
+
     @ManyToOne
     @JoinColumn(name = "user_entity_id")
     private UserEntity userEntity;
