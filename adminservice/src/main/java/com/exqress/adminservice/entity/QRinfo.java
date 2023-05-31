@@ -37,12 +37,6 @@ public class QRinfo implements Serializable {
     public QRinfo(){
 
     }
-    public QRinfo(String invoiceNo, String productName, String address){
-        this.invoiceNo = invoiceNo;
-        this.productName = productName;
-        this.address = address;
-    }
-
     public void assignedUser(UserEntity user){
         this.userEntity = user;
     }
