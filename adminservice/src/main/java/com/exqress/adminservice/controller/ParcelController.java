@@ -75,7 +75,9 @@ public class ParcelController {
     @GetMapping("/{qrId}")
     public String createQRcode(@PathVariable String qrId, Model model) throws IOException, WriterException {
         log.info("Create QRcode : {}", qrId);
+        QRinfo qRinfo = qRinfoRepository.findByQrId(qrId);
         String qrCodeImage = getQRCodeImage(qrId, 200, 200);
+        model.addAttribute("qrInfo", qRinfo);
         model.addAttribute("img", qrCodeImage);
 
         return "form/qrCode";

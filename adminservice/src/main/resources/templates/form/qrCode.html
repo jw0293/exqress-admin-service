@@ -46,6 +46,8 @@
         <div id="sectionToPrint">
             <img th:src="@{'data:image/jpeg;base64,'+${img}}">
         </div>
+        <td th:text="${qrInfo.productName}">상품 이름</td>
+        <td th:text="${qrInfo.address}">배송 주소</td>
         <div class="row">
             <div class="col">
                 <button class="w-100 btn btn-primary btn-lg invisible-btn" type="submit" onclick="printSection()">출력하기</button>
