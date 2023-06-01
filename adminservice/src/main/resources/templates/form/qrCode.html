@@ -1,64 +1,121 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-          href="../css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      th:href="@{/css/bootstrap.min.css}"
+      href="../css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        @page {
-            size: auto;
-            margin: 0;
+      * {
+        -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+        color-adjust: exact !important; /*Firefox*/
+      }
+      @page {
+        size: auto;
+        margin: 0;
+      }
+      @media print {
+        .hidden {
+          display: none;
         }
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-            }
-            #sectionToPrint,
-            #sectionToPrint * {
-                visibility: visible;
-            }
-            #sectionToPrint {
-                position: absolute;
-                left: 10px;
-                top: 0;
-            }
-            .invisible-btn {
-                display: none;
-            }
-            .container {
-                width:100vw;
-                height:100vh;
-                display:flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
+      }
+      #sectionToPrint {
+        width: 700px;
+        height: 400px;
+
+        background-image: url("../image/parcels.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        font-size: 25px;
+      }
+      .address {
+        padding-top: 155px;
+        padding-left: 30px;
+      }
+      .box {
+        padding-top: 50px;
+        padding-left: 15px;
+
+        display: flex;
+        align-items: center;
+
+        z-index: 100;
+      }
+      .item {
+        margin-left: 30px;
+      }
     </style>
     <script>
-        function printSection() {
-            window.print();
-        }
+      function printSection() {
+        window.print();
+      }
     </script>
-</head>
-<body>
-    <div class="container">
-        <div id="sectionToPrint">
-            <img th:src="@{'data:image/jpeg;base64,'+${img}}">
+  </head>
+  <body>
+    <div id="sectionToPrint">
+      <div class="address">
+        <td th:text="${qrInfo.address}">배송 주소:</td>
+      </div>
+      <div class="box">
+        <img
+          th:src="@{'data:image/jpeg;base64,'+${img}}"
+          width="140"
+          alt="no-image"
+        />
+        <div class="item">
+          <td th:text="${qrInfo.productName}">상품 이름:</td>
         </div>
-        <td th:text="${qrInfo.productName}">상품 이름</td>
-        <td th:text="${qrInfo.address}">배송 주소</td>
-        <div class="row">
-            <div class="col">
-                <button class="w-100 btn btn-primary btn-lg invisible-btn" type="submit" onclick="printSection()">출력하기</button>
-            </div>
-            <div class="col">
-                <button class="w-100 btn btn-secondary btn-lg invisible-btn"
-                        onclick="location.href='users.html'"
-                        th:onclick="|location.href='@{/users}'|"
-                        type="button">돌아가기</button>
-            </div>
-        </div>
+      </div>
     </div>
-</body>
+    <div class="row">
+      <div class="col">
+        <button
+          class="w-100 btn btn-primary btn-lg invisible-btn hidden"
+          onclick="printSection()"
+        >
+          출력하기
+        </button>
+      </div>
+      <div class="col">
+        <button
+          class="w-100 btn btn-secondary btn-lg invisible-btn hidden"
+          onclick="location.href='users.html'"
+          th:onclick="|location.href='@{/users}'|"
+          type="button"
+        >
+          돌아가기
+        </button>
+      </div>
+    </div>
+    <!-- <div class="container">
+      <div id="sectionToPrint">
+        <img th:src="@{'data:image/jpeg;base64,'+${img}}" />
+      </div>
+
+      <td th:text="${qrInfo.address}">배송 주소</td>
+      <div class="row">
+        <div class="col">
+          <button
+            class="w-100 btn btn-primary btn-lg invisible-btn"
+            type="submit"
+            onclick="printSection()"
+          >
+            출력하기
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="w-100 btn btn-secondary btn-lg invisible-btn"
+            onclick="location.href='users.html'"
+            th:onclick="|location.href='@{/users}'|"
+            type="button"
+          >
+            돌아가기
+          </button>
+        </div>
+      </div> -->
+  </body>
 </html>
