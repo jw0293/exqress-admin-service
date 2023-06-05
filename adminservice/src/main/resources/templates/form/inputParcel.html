@@ -19,16 +19,8 @@
         <h2>배송 상품 등록</h2>
       </div>
 
-<<<<<<< HEAD
-    <form action="users.html" th:action th:object="${requestqrinfo}" method="post">
 
-        <div th:if="${#fields.hasGlobalErrors()}">
-            <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
-        </div>
-
-=======
       <form action="users.html" th:action th:object="${qRinfo}" method="post">
->>>>>>> 9cab256baed37a4dd56c9e8e5348ef09bcec968c
         <div>
           <label for="invoiceNo">운송장 번호</label>
           <input
