@@ -14,8 +14,8 @@
       }
       @page {
         size: auto;
-        margin-top: 1cm;
-        margin-left: 0.5cm;
+        margin-top: 0.5cm;
+        margin-left: 1cm;
       }
       @media print {
         .hidden {
@@ -23,8 +23,10 @@
         }
       }
       #sectionToPrint {
-        width: 14cm;
-        height: 10cm;
+        width: 13cm;
+        height: 9cm;
+        margin-top: 0.5cm;
+        margin-left: 1cm;
 
         background-image: url("/images/parcels.png");
         background-repeat: no-repeat;
@@ -33,11 +35,11 @@
         font-size: 25px;
       }
       .address {
-        padding-top: 155px;
+        padding-top: 100px;
         padding-left: 30px;
       }
       .box {
-        padding-top: 50px;
+        padding-top: 38px;
         padding-left: 15px;
 
         display: flex;
@@ -63,7 +65,7 @@
       <div class="box">
         <img
           th:src="@{'data:image/jpeg;base64,'+${img}}"
-          width="140"
+          width="90"
           alt="no-image"
         />
         <div class="item">
