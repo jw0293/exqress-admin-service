@@ -12,10 +12,10 @@ spring:
 #    driver-class-name: org.h2.Driver
 #    initialization-mode: always
 #    platform: h2
-    url: jdbc:postgresql://localhost:5432/springdata
-    username: kjw
-    password: kjw
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://database-1.ckuqz95whd48.ap-northeast-2.rds.amazonaws.com:3306/admin
+    username: admin
+    password: 62376919k
 
   #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://exqress-db.ctxktr2nwban.ap-northeast-2.rds.amazonaws.com:3306/admin?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
@@ -24,11 +24,11 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     defer-datasource-initialization: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.H2Dialect
     sql:
     init:
       mode: always
