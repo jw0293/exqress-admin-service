@@ -1,10 +1,18 @@
 package com.exqress.adminservice.service;
 
 import com.exqress.adminservice.entity.Admin;
+import com.exqress.adminservice.entity.QRinfo;
+import com.exqress.adminservice.entity.UserEntity;
 import com.exqress.adminservice.repository.AdminRepository;
+import com.exqress.adminservice.repository.QRinfoRepository;
+import com.exqress.adminservice.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor

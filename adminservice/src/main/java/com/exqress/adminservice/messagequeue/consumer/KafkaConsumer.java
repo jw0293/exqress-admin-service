@@ -28,18 +28,18 @@ public class KafkaConsumer {
         objectMapper = new ObjectMapper();
     }
 
-    @KafkaListener(topics = KafkaTopic.CREATE_USER)
-    public void assignUser(String kafkaMessage){
-        log.info("ComeIn User Assign to Kafka");
-        Map<Object, Object> map = new HashMap<>();
-        try{
-            map = objectMapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>() {});
-        } catch (JsonProcessingException ex){
-            ex.printStackTrace();
-        }
-        UserEntity user = getUserEntity(map);
-        userRepository.save(user);
-    }
+//    @KafkaListener(topics = KafkaTopic.CREATE_USER)
+//    public void assignUser(String kafkaMessage){
+//        log.info("ComeIn User Assign to Kafka");
+//        Map<Object, Object> map = new HashMap<>();
+//        try{
+//            map = objectMapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>() {});
+//        } catch (JsonProcessingException ex){
+//            ex.printStackTrace();
+//        }
+//        UserEntity user = getUserEntity(map);
+//        userRepository.save(user);
+//    }
 
     private UserEntity getUserEntity(Map<Object, Object> map){
         UserEntity userEntity = new UserEntity();

@@ -5,21 +5,36 @@ spring:
       settings:
         web-allow-others: true
   datasource:
-#    url: jdbc:h2:mem:testdb3
+    #url: jdbc:h2:mem:testdb3
+    #url: jdbc:h2:tcp://localhost/~/admin
 #    username: sa
 #    password:
 #    driver-class-name: org.h2.Driver
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://exqress-db.ctxktr2nwban.ap-northeast-2.rds.amazonaws.com:3306/admin?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: admin
-    password: qwer1234
+#    initialization-mode: always
+#    platform: h2
+    url: jdbc:postgresql://localhost:5432/springdata
+    username: kjw
+    password: kjw
+    driver-class-name: org.postgresql.Driver
+
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://exqress-db.ctxktr2nwban.ap-northeast-2.rds.amazonaws.com:3306/admin?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: admin
+#    password: qwer1234
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: create
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    sql:
+    init:
+      mode: always
 
 server:
-  port: 4003
+  port: 8000
   servlet:
     session:
       tracking-modes: cookie

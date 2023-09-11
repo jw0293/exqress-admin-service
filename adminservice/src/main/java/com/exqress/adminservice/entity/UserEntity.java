@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -30,7 +31,7 @@ public class UserEntity implements Serializable {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "userEntity")
-    private List<QRinfo> qRinfoList;
+    private List<QRinfo> qRinfoList = new ArrayList<>();
 
     public UserEntity(String name, String id, String pn) {
         this.name = name;

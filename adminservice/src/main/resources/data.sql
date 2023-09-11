@@ -1,0 +1,2 @@
+-- INSERT INTO Admin (loginid, name, password) VALUES ("max99kim@naver.com", "김중원", "1234");
+-- INSERT INTO Admin (loginid, name, password) VALUES ("k38836919@gmail.com", "홍길동", "5678");

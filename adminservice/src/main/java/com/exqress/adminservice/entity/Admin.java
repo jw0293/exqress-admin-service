@@ -14,10 +14,15 @@ public class Admin {
     private Long id;
 
     @NotEmpty
+    @Column(nullable = false)
     private String loginId;
+
     @NotEmpty
+    @Column(nullable = false)
     private String name;
+
     @NotEmpty
+    @Column(nullable = false)
     private String password;
 
 }
