@@ -23,7 +23,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
-	implementation 'mysql:mysql-connector-j'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
 
 	runtimeOnly 'com.mysql:mysql-connector-j'
