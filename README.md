@@ -53,7 +53,10 @@
 
 </br> </br>
 
-![image](https://github.com/jw0293/exqress-admin-service/assets/80098469/0445d2bb-ad91-4c88-a883-50203ddc6b3d) ![image](https://github.com/jw0293/exqress-admin-service/assets/80098469/a4a42c87-92f3-46c8-997f-464aa3731a6c) ![image](https://github.com/jw0293/exqress-admin-service/assets/80098469/d947646d-427f-4d26-9358-f8ca02d4d1cc)
+| ![image](https://github.com/jw0293/exqress-admin-service/assets/80098469/0445d2bb-ad91-4c88-a883-50203ddc6b3d) | ![image](https://github.com/jw0293/exqress-admin-service/assets/80098469/a4a42c87-92f3-46c8-997f-464aa3731a6c) | ![image](https://github.com/jw0293/exqress-admin-service/assets/80098469/d947646d-427f-4d26-9358-f8ca02d4d1cc) |
+| :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |  
+|                                               BACK-END                                                    |                                                FRONT-END                                                     |                                            CI/CD                                          
+
 
 
 </br>
